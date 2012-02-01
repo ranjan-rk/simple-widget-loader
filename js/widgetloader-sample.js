@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-	$("#resultDiv").load('http://localhost:8080/consumer/state/TX/city/San%20Antonio/drugprices.html #topTenDrugsContainer',function(){
+	$("#resultDiv").load('http://search.twitter.com/search.json?q=twitter&callback=processResponse"',function(){
 		alert('Done Loading');
 	});
 	

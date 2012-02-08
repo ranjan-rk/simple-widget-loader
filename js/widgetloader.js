@@ -24,11 +24,17 @@
 					obj.css('background-color', settings.bgColor);
 					obj.css('border', 'solid 1px '+settings.border);
 					
+					var script = document.createElement('script');
+					script.setAttribute('src', settings.url);
+					document.getElementsByTagName('head')[0].appendChild(script); 
+					
+					processResponse=function (data){
+						obj.html(data.query);
+					}
+					
 				}
 				
-				function processResponse(data){
-					alert(data);
-				}
+				
 				function customizeYourWidget(){
 					//TODO : parse your response
 				}

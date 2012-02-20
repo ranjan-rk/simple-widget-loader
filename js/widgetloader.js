@@ -6,7 +6,13 @@
 				height: 200,
 				width: 200,
 				bgColor : 'white',
-				border : 'lightgray'
+				border : 'lightgray',
+				headerSize : 'h3', 		//html h1,h2,h3
+				footerSize : 'h3', 		//html h1,h2,h3
+				headerBgColor : 'lightGray',
+				footerBgColor : 'lightGray',
+				headerTitle : 'Header',
+				footerTitle : 'Footer'
 			},
 			
 			settings = $.extend(defaults, settings);
@@ -24,21 +30,16 @@
 					obj.css('background-color', settings.bgColor);
 					obj.css('border', 'solid 1px '+settings.border);
 					
-					var script = document.createElement('script');
-					script.setAttribute('src', settings.url);
-					document.getElementsByTagName('head')[0].appendChild(script); 
+					obj.before('<' + settings.headerSize +' style="margin: 0px;'+'width: '+settings.width+';background-color: '+settings.headerBgColor+';"' +'>' +settings.headerTitle+'</'+ settings.headerSize +'>');
+					obj.after('<' + settings.footerSize +' style="margin: 0px;'+'width: '+settings.width+';background-color: '+settings.footerBgColor+';"' +'>' +settings.footerTitle+'</'+ settings.footerSize +'>');
 					
-					processResponse=function (data){
-						obj.html(data.query);
-					}
-					
+					processData();
 				}
 				
-				
-				function customizeYourWidget(){
-					//TODO : parse your response
+				// This function is to be replaced with user defined function for porcessing data.
+				function processData(){
+					obj.html('No data to process');
 				}
-				
 				
 			});
 

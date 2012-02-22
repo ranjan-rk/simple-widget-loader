@@ -36,7 +36,7 @@
 					processData();
 				}
 				
-				// This function is to be replaced with user defined function for porcessing data.
+				// This function is to be replaced with user defined function for processing data.
 				function processData(){
 					obj.html('No data to process');
 				}

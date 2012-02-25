@@ -77,7 +77,7 @@ $("#resultDiv").widgetLoader({
 				headerTitle : 'Twitter Search Results',
 				footerTitle : 'Twitter'
 		});
-		```
+```
 		
 		
 

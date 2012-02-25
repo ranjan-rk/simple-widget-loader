@@ -3,66 +3,66 @@ Simple Widget Loader
 
 jQuery plugin to load a fully customizable widget.
 
-Customization options provided uunder this plugin are as below:
+Customization options provided under this plugin are as below:
 
-*url:* 
+url:
 --------------
 	Specify the url from which you want to load your data.
 
-*urlReturnType*: 
+urlReturnType: 
 --------------
 	Object type of the URL data. Currently only jsonp is supported. json and other types will be handeled soon
 	
-*height*: 
+height: 
 --------------
 	Height of the widget.
 	
-*width*: 
+width: 
 --------------
 	Height of the widget.
 	
-*bgColor* : 
+bgColor : 
 --------------
 	Background color of the widget.
 	
-*border* : 
+border : 
 --------------
 	Border and border type for widget.
 	
-*headerSize* :
+headerSize :
 -------------- 
 	Headersize of the widget. currently HTML h1,h2 and h3 options are supported. Headers cannot be edited as of now.
 	This functionality will be added in next release.
 	
-*footerSize* :
+footerSize :
 -------------- 
 	Footersize of the widget. currently HTML h1,h2 and h3 options are supported. Footers cannot be edited as of now.
 	This functionality will be added in next release.
 	
-*headerBgColor* : 
+headerBgColor : 
 --------------
 	Header's background color.
 	
-*footerBgColor* : 
+footerBgColor : 
 --------------
 	Footer' s background color.
 	
-*headerTitle* : 
+headerTitle : 
 --------------
 	Title for header. Alignment could be provided through css.
 	
-*footerTitle* : 
+footerTitle : 
 --------------
 	Title for footer. Alignment could be provided through css.
 	
-*displayType*: 
+displayType: 
 --------------
 	Currently only singleColumnType display is supported. More will be added soon.
 	
 	
 Example code.
 --------------
-$("#resultDiv").widgetLoader({
+```$("#resultDiv").widgetLoader({
 				url: 'http://search.twitter.com/search.json?q=blue&callback=processData',
 				urlReturnType: 'jsonp', 
 				height: 500,
@@ -75,7 +75,7 @@ $("#resultDiv").widgetLoader({
 				footerBgColor : 'lightblue',
 				headerTitle : 'Twitter Search Results',
 				footerTitle : 'Twitter'
-		});
+		});```
 		
 		
 

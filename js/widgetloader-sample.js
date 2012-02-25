@@ -6,6 +6,3 @@ $(document).ready(function() {
 		
 		
 });
-function processData(data){
-		alert(data);
-}

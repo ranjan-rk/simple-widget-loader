@@ -1,19 +1,21 @@
 (function( $ ) {
+		
 	  $.fn.widgetLoader = function(settings) {
 	  
 			var defaults = {
 				url: '',
 				urlReturnType: 'jsonp', // this can be json, jsonp, xml or html
-				height: 200,
-				width: 200,
+				height: 400,
+				width: 400,
 				bgColor : 'white',
-				border : 'lightgray',
+				border : 'lightblue',
 				headerSize : 'h3', 		//html h1,h2,h3
 				footerSize : 'h3', 		//html h1,h2,h3
-				headerBgColor : 'lightGray',
-				footerBgColor : 'lightGray',
+				headerBgColor : 'lightblue',
+				footerBgColor : 'lightblue',
 				headerTitle : 'Header',
-				footerTitle : 'Footer'
+				footerTitle : 'Footer',
+				displayType: 'singleColumnType' // can be multicoulmn
 			},
 			
 			settings = $.extend(defaults, settings);
@@ -21,7 +23,7 @@
 			return this.each(function(){
 				
 				var obj = $(this);
-				
+				obj.css("overflow-y","scroll");
 				$.fn.widgetLoader.loadWidgetFrame(obj,settings);
 				$.fn.widgetLoader.loadWidget(obj,settings);
 				
@@ -41,23 +43,65 @@
 		
 		 $.fn.widgetLoader.loadWidget=function(obj,settings){
 		 
-			if(settings.urlReturnType='jsonp'){
+			if(settings.urlReturnType=='jsonp'){
 				 $.fn.widgetLoader.processJSONPResponse(obj,settings);
 			}
 			
 		 };
 		 
 		 $.fn.widgetLoader.processJSONPResponse=function(obj,settings){
+			
 			var callbackFun = 
 				decodeURI(
 					(RegExp('callback' + '=' + '(.+?)(&|$)').exec(settings.url)||[,null])[1]);
 					
+			// TO DO :- add param to options callback param name.
+				
 			var script = document.createElement('script');
 			script.setAttribute('src', settings.url);
 			
+			var script2 = document.createElement('script');
+			script2.innerHTML="var obj="+obj.attr('id')+"; function "+callbackFun +"(data){$.fn.widgetLoader.responseProcessor(data,obj,'"+settings.displayType+"');}";
+
+			document.getElementsByTagName('head')[0].appendChild(script2); 
 			document.getElementsByTagName('head')[0].appendChild(script); 
-			
-			
 		 };
+		 
+		 $.fn.widgetLoader.responseProcessor=function(data,obj,displayType){
+			$(obj).html(data);
+			if(displayType=='singleColumnType'){
+				$.fn.widgetLoader.singleColumnDisplay(data,obj);
+			}
+		 };
+		 
+		 $.fn.widgetLoader.singleColumnDisplay=function(data,obj){
+			var table= document.createElement('table');
+			
+			var resultLength =  data.results.length;
+			
+			for(var i=0;i<resultLength;i++){
+				var tr = document.createElement('tr');
+				
+				var td1 = document.createElement('td');
+				var td2 = document.createElement('td');
+				
+				var img = document.createElement('img');
+				img.setAttribute("src",data.results[i].profile_image_url);
+				
+				td2.innerHTML='<b><i>'+data.results[i].from_user+'</i></b>'+'<br>'+data.results[i].text;
+				td1.appendChild(img);
+				
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				
+				tr.setAttribute("style","background-color:lightyellow;");
+				
+				table.setAttribute("border","0");
+				
+				table.appendChild(tr);
+			}
+			
+			$(obj).html(table);
+		 }
 	  
 })( jQuery );

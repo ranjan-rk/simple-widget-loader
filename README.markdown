@@ -79,6 +79,12 @@ $("#resultDiv").widgetLoader({
 		});
 ```
 		
-		
+Detailed description: 		
+---------------------
+	Change the fucntion "singleColumnDisplay" according to your needs to display your widget as you want.
+	
+
+
+
 
 More customization options coming soon.

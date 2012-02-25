@@ -58,5 +58,25 @@ Customization options provided uunder this plugin are as below:
 *displayType*: 
 --------------
 	Currently only singleColumnType display is supported. More will be added soon.
+	
+	
+Example code.
+--------------
+$("#resultDiv").widgetLoader({
+				url: 'http://search.twitter.com/search.json?q=blue&callback=processData',
+				urlReturnType: 'jsonp', 
+				height: 500,
+				width: 400,
+				bgColor : 'lightblue',
+				border : 'lightblue',
+				headerSize : 'h3',
+				footerSize : 'h3',		
+				headerBgColor : 'lightblue',
+				footerBgColor : 'lightblue',
+				headerTitle : 'Twitter Search Results',
+				footerTitle : 'Twitter'
+		});
+		
+		
 
 More customization options coming soon.

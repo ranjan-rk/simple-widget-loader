@@ -3,7 +3,7 @@
 	  $.fn.widgetLoader = function(settings) {
 	  
 			var defaults = {
-				url: '',
+				url: 'http://search.twitter.com/search.json?q=twitter&callback=processData',
 				urlReturnType: 'jsonp', // this can be json, jsonp, xml or html
 				height: 400,
 				width: 400,
@@ -31,6 +31,7 @@
 			
 	  };
 	  
+	  /* Function defining the basic frame of the widget */
 	  $.fn.widgetLoader.loadWidgetFrame=function(obj,settings){
 				obj.height(settings.height);
 					obj.width(settings.width);
@@ -41,6 +42,7 @@
 					obj.after('<' + settings.footerSize +' style="margin: 0px;'+'width: '+settings.width+';background-color: '+settings.footerBgColor+';"' +'>' +settings.footerTitle+'</'+ settings.footerSize +'>');
 		};
 		
+		/* This function loads the widegt in web page  */
 		 $.fn.widgetLoader.loadWidget=function(obj,settings){
 		 
 			if(settings.urlReturnType=='jsonp'){
@@ -67,6 +69,7 @@
 			document.getElementsByTagName('head')[0].appendChild(script); 
 		 };
 		 
+		 /* Generic function to process response obtained by hitting the URL */
 		 $.fn.widgetLoader.responseProcessor=function(data,obj,displayType){
 			$(obj).html(data);
 			if(displayType=='singleColumnType'){
@@ -74,6 +77,8 @@
 			}
 		 };
 		 
+		 
+		 /* This function is to be edited by the user to display his/her own data in accordance with css style */
 		 $.fn.widgetLoader.singleColumnDisplay=function(data,obj){
 			var table= document.createElement('table');
 			

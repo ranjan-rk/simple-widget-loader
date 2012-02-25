@@ -62,7 +62,8 @@ displayType:
 	
 Example code.
 --------------
-```$("#resultDiv").widgetLoader({
+```javascript
+$("#resultDiv").widgetLoader({
 				url: 'http://search.twitter.com/search.json?q=blue&callback=processData',
 				urlReturnType: 'jsonp', 
 				height: 500,
@@ -75,7 +76,8 @@ Example code.
 				footerBgColor : 'lightblue',
 				headerTitle : 'Twitter Search Results',
 				footerTitle : 'Twitter'
-		});```
+		});
+		```
 		
 		
 
